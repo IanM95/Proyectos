@@ -1,0 +1,222 @@
+/* para crear variables de estilo, no necesariamente solo para colores */
+:root {
+    --blanco: #ffffff;
+    --oscuro: #212121; 
+    --primario: #FFC107;
+    --secundario: #0097A7;
+    --gris: #757575;
+}
+html {
+     font-size: 62.5%;
+     box-sizing: border-box; /* para que el pading no afecte el tamaño del elemento */
+     scroll-snap-type: y mandatory;
+}
+*, *:before, *:after{
+    box-sizing: inherit;
+}
+body {
+    font-size: 16px; /* Hace que cada rem sea equivalente a 10px */
+    font-family: 'Krub' ; /* para cambiar el tipo de fuente */
+    background-image: linear-gradient(to top, #DFE9F3 0%, var(--blanco) 40%); /* para eñ fondo degradado */
+}
+.sombra {
+    -webkit-box-shadow: 0px 4px 5px 0px rgba(0,0,0,0.54);
+    -moz-box-shadow: 0px 4px 5px 0px rgba(0,0,0,0.54);
+    box-shadow: 0px 4px 5px 0px rgba(0,0,0,0.54);
+    background-color: var(--blanco);
+    padding: 2rem;
+    border-radius: 1rem;
+}
+h1 {
+    font-size: 3.8rem;
+}
+h2 {
+    font-size: 2.8rem;
+}
+h3 {
+    font-size: 1.8rem;
+}
+h1, h2, h3 {
+    text-align: center;
+}
+/* Si tenemos varios span debemos especificar la etiqueta dentro del cual está el span */
+.titulo span {
+    font-size: 2rem;
+}
+/* las clases se utilizan para reutilizar codigo css en diferentes elementos y se llaman mediante: .nombre */ 
+/* los ID se utilizan darle un nombre a cada elemento y se llama mediante: #nombre */ 
+.contenedor {
+    max-width: 120rem;
+    margin-top: 0;
+    margin-right: auto;
+    margin-bottom: 0;
+    margin-left: auto;
+    /* los margenes se pueden reemplazar por una sola linea "margin: 0 auto 0 auto;" o incluso "margin: 0 auto", ccs estiende que el primer valor es para arriba y abajo, y el otro para los lados */
+    /* margin es la separación desde el limite del elemento hasta el proximo elemento extreno */
+}
+.boton {
+    background-color: var(--secundario);
+    color: var(--blanco);
+    padding: 1rem 3rem;
+    margin-top: 1rem;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-weight: bold;
+    border-radius: 0.5rem;
+    width: 80%;
+    text-align: center;
+    border: none;
+}
+@media (min-width: 760px) {
+    .boton {
+        width: auto;
+    }
+}
+.boton:hover {
+    cursor: pointer;
+}
+.w-sm-100 {
+    width: 100%;
+}
+@media (min-width: 780px) {
+    .w-sm-100 {
+        width: auto;
+    }
+}
+.flex {
+    display: flex;
+}
+.alinear-derecha {
+    justify-content: flex-end;
+}
+.nav-bg{ /*de este modo el fondo se extiende mas allá del navegador*/
+    background-color: var(--secundario);
+}
+.navegacion-principal {
+    /*  padding: 2rem 2rem 2rem 2rem; el padin es lo mismo que el margin pero desde el borde del elemento hacia adentro */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+@media (min-width: 768px) {
+       .navegacion-principal {
+           flex-direction: row;
+       }
+}
+.navegacion-principal a{
+    color: var(--blanco);
+    text-decoration: none; /* para quitar la linea de abajo del texto*/
+    font-size: 2rem;
+    font-weight: 700;
+    padding: 2rem;
+}
+.navegacion-principal a:hover{ /* para cuando el link este activo */
+    background-color: var(--primario);
+    color: var(--oscuro);
+}
+@media (min-width: 480px) {
+       
+}
+.hero {
+    background-image: url(../hero.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 450px;
+    position: relative;
+}
+.contenido-hero {
+    position: absolute;
+    background-color: rgba(0,0,0,0.6);
+    width : 100%;
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.contenido-hero h2, .contenido-hero p {
+    color: var(--blanco);
+}
+.servicios, .navegacion-principal, .formulario {
+    scroll-snap-align: center; /* scroll snap */
+    scroll-snap-stop: always;
+}
+@media (min-width: 780px) {
+    .servicios {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr; /* grid-template-columns: repeat(3, 1fr) son lo mismo */
+        column-gap: 1rem;
+    }  
+}
+.servicio {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.servicio h3 {
+    color: var(--secundario);
+}
+.servicio p{
+    line-height: 2;
+    text-align: center;
+}
+.servicio .iconos {
+    height: 15rem;
+    width: 15rem;
+    background-color: var(--primario);
+    border-radius: 50%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+.formulario {
+    background-color: var(--gris);
+    width: min(60rem, 100%); /* hace que se tome el valor mas pequeño */
+    margin: 0 auto; /* se utiliza para elementos cuyo padre no tiene un display flex */
+    padding: 2rem;
+}
+.formulario fieldset{
+    border: none;
+}
+.formulario legend{
+    color: var(--primario);
+    text-align: center;
+    font-size: 1.8rem;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-bottom: 2rem;
+}
+@media (min-width: 780px) {
+       .contenedor-campos{
+           display: grid;
+           grid-template-columns: repeat(2, 1fr);
+           grid-template-rows: auto auto auto;
+           column-gap: 1rem;
+       }
+       .correo, .mensaje {
+           grid-column: 1 / 3; /* para acomodar el elemento en varias columnas, tambien se puede con las filas*/
+       }
+}
+.campo {
+    margin-bottom: 1rem;
+}
+.campo label {
+    color: var(--blanco);
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    display: block;
+}
+.input-text {
+    width: 100%;
+    border: none;
+    padding: 1.5rem;
+    border-radius: 5%;
+}
+.campo textarea{
+    height: 20rem;
+}
+.footer p {
+    text-align: center;
+}
